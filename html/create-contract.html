@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Créer un contrat</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../js/jquery-3.2.1.js" ></script>
+    <script type="text/javascript" src="../js/signatories-handling.js"></script>
+  </head>
+  <body>
+    <h1>Créer un contrat</h1>
+
+    
+    <!-- Form for contract creation. Get method is used during development, 
+	 Post would be more appropriate -->
+    <form action="../scripts/create-contract.php" method="get">
+
+      <!-- Pre-entered option fields, should be retrieved from database in further dev -->
+      <label id="ContractHeadingLabel" for="ContractHeading">Objet du contrat:</label>
+      <select id="ContractHeading" name="ContractHeading">
+	<option>Contrat de maintenance Gestion Ressources Humaines et Gestion Financière</option>
+	<option>Contrat de suivi de progiciels pack e.magnus</option>
+	<option>Contrat de suivi de progiciels santé</option>
+      </select>
+
+      <br><br>
+
+      <!-- Each row represents a signatory in the contract -->
+      <!-- By default, the first row describe the Berger-Levrault company
+	-- since the application is running on the Berger-Levrault company's side   
+	-->
+      <fieldset>
+	<legend>Description des parties:</legend>
+	<table id="SignatoriesEntries">
+	  <tr>
+	    <th>Statut</th>
+	    <th>Raison sociale</th>
+	    <th>Siège social</th>
+	    <th>Titulaire</th>
+	    <th>Numéro Siret</th>
+	  </tr>
+	  
+	  <!-- Berger-Levrault is the default 'Prestataire' signatory of all contracts -->
+	  <tr id="BergerLevraultRow">
+	    <td hidden><input type="text" id="Id" name="SignatoriesId[]" value="1" hidden></td>
+	    <td><input type="text" id="SignatoryStatus" name="SignatoryStatus[]" value="Prestataire" readonly></td>
+	    <td><input type="text" value="Berger-Levrault" readonly></td>
+	    <td><input type="text" value="892, Rue Yves Kermen, 92100 Boulogne-Billancourt" readonly></td>
+	    <td><input type="text" value="Antoine Rouillard" readonly></td>
+	    <td><input type="text" value="755 800 646" readonly></td>
+	  </tr>
+	  
+	  <tr id="LastSignatoryRow">
+	    <td hidden><input type="text" id="Id" name="SignatoriesId[]" hidden></td>
+	    <td><input type="text" id="SignatoryStatus" name="SignatoryStatus[]" value="Client" readonly></td>
+	    <td id="BusinessNameContainer">
+	      <select id="BusinessName">
+	      </select>
+	    </td>
+	    <td><input type="text" id="HeadQuarters" readonly></td>
+	    <td><input type="text" id="Holder" readonly></td>
+	    <td><input type="text" id="RegistrationNumber" readonly></td>
+	    <td><input type="button" onclick="deleteSignatoryRow(this)" value="Supprimer"></td>
+	  </tr>
+	</table>
+
+	<!-- NYI : Allow for row adding via jQuery function -->
+	<input type="button" onclick="addSignatoryRow()" value="Ajouter une ligne">
+      </fieldset>
+
+      <br>
+
+      <!-- Contract's modalities of execution -->
+      <fieldset>
+	<legend>Modalités:</legend>
+
+	<label id="StartingDateLabel" for="StartingDate">Date de départ:</label>
+	<input type="date" id="StartingDate" name="StartingDate" placeholder="jj-mm-aaaa" required>
+
+	<label id="EndingDateLabel" for="EndingDate">Date de fin:</label>
+	<input type="date" id="EndingDate" name="EndingDate" placeholder="jj-mm-aaaa" required>
+	
+      </fieldset>
+      
+      <br>
+      
+      <input type="submit" name="submit" value="Créer">
+
+    </form>
+
+    <br>
+    
+    <a href="../index.php">Page d'accueil</a>
+    
+  </body>
+</html>

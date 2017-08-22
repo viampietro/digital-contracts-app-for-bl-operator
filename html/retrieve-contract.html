@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Liste des contrats</title>
+    <script type="text/javascript" src="../js/jquery-3.2.1.js" ></script>
+    <script type="text/javascript" src="../js/contracts-handling.js"></script>
+  </head>
+  <body>
+    <h1>Liste des contrats à enregistrer dans la Blockchain</h1>
+    
+    <table id="contractsList" style="display: {contracts_list_mode}">
+      <tr>
+	<th>Objet du contrat</th>
+	<th>Date de début</th>
+	<th>Date de fin</th>
+	<th>Signataires</th>
+	<th>A signer</th>
+	<th>Statut</th>
+      </tr>
+      {contracts_list}
+    </table>
+
+    <pre id="message" style="display: {message_mode}">
+      {message}
+    </pre>
+
+    <p><a href="../index.php">Page d'accueil</a></p>
+    
+  </body>
+</html>
