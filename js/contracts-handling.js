@@ -15,7 +15,7 @@ function addToBlockchain (button, contractId) {
    * data is a JSON-formatted object whether containing success and payload attributes in case of success,
    * or error attribute in case of failure.
    * */
-  $.post("http://localhost/app-for-bl-operator/scripts/add-contract-to-blockchain.php?id=" + contractId, function(data) {
+  $.post("http://vincent-linux/app-for-bl-operator/scripts/add-contract-to-blockchain.php?id=" + contractId, function(data) {
     
     var response = JSON.parse(data);
 
