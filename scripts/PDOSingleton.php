@@ -4,10 +4,10 @@
 class PDOSingleton
 {
 	private static $SERVERNAME = "localhost";
-	private static $USERNAME = "root";
-	private static $PASSWORD = "bc@bl2017";
+	private static $USERNAME = "dc-bl-operator-app";
+	private static $PASSWORD = "bl-operator-app";
 	private static $PDO_INSTANCE = NULL;
-
+    
 	static public function getPDOInstance() {
 
         if (self::$PDO_INSTANCE == NULL) {
